@@ -16,18 +16,20 @@ import com.example.roomexample.model.Word
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import org.koin.android.ext.android.inject
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mainViewModel: MainViewModel
+    private val mainViewModel: MainViewModel by viewModel()
 
-    private lateinit var  adapter: WordListAdapter
+    private val adapter: WordListAdapter by inject()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        //mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
         setUpList()
 
@@ -44,7 +46,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUpList() {
-        adapter = WordListAdapter(this)
+        //adapter = WordListAdapter(this)
         recyclerview.adapter = adapter
         recyclerview.layoutManager = LinearLayoutManager(this)
 
